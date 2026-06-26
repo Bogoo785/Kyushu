@@ -1,0 +1,23 @@
+{
+  "name": "Kyushu Trip 2026",
+  "short_name": "Kyushu",
+  "description": "Kyushu trip itinerary",
+  "start_url": "/",
+  "display": "standalone",
+  "background_color": "#fffaf1",
+  "theme_color": "#2b6f77",
+  "icons": [
+    {
+      "src": "/icon-192.png",
+      "sizes": "192x192",
+      "type": "image/png",
+      "purpose": "any maskable"
+    },
+    {
+      "src": "/icon-512.png",
+      "sizes": "512x512",
+      "type": "image/png",
+      "purpose": "any maskable"
+    }
+  ]
+}
