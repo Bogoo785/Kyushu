@@ -51,8 +51,6 @@ function App() {
               {itineraryPages.map((item) => (
                 <a
                   href={`?day=${encodeURIComponent(item.date)}`}
-                  target="_blank"
-                  rel="noreferrer"
                   title={`${item.date}｜${item.title}`}
                   key={item.date}
                 >

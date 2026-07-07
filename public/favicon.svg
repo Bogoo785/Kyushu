@@ -1,21 +1,20 @@
 <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 512 512">
   <defs>
-    <linearGradient id="sky" x1="80" x2="432" y1="40" y2="472" gradientUnits="userSpaceOnUse">
-      <stop offset="0" stop-color="#fff7df"/>
-      <stop offset=".46" stop-color="#f6c35d"/>
-      <stop offset="1" stop-color="#2b6f77"/>
+    <linearGradient id="bg" x1="70" x2="442" y1="42" y2="470" gradientUnits="userSpaceOnUse">
+      <stop offset="0" stop-color="#102b44"/>
+      <stop offset=".62" stop-color="#245f69"/>
+      <stop offset="1" stop-color="#e0a84e"/>
     </linearGradient>
-    <linearGradient id="sun" x1="150" x2="360" y1="112" y2="332" gradientUnits="userSpaceOnUse">
-      <stop offset="0" stop-color="#ff7d5d"/>
-      <stop offset="1" stop-color="#c43838"/>
+    <linearGradient id="sun" x1="188" x2="326" y1="82" y2="226" gradientUnits="userSpaceOnUse">
+      <stop offset="0" stop-color="#ffe18a"/>
+      <stop offset="1" stop-color="#e85f43"/>
     </linearGradient>
   </defs>
   <rect width="512" height="512" rx="112" fill="#fffaf1"/>
-  <rect x="34" y="34" width="444" height="444" rx="94" fill="url(#sky)"/>
-  <circle cx="256" cy="218" r="118" fill="url(#sun)"/>
-  <path fill="#17313e" d="M128 292h256v46H128z"/>
-  <path fill="#17313e" d="M164 338h52v100h-52zM296 338h52v100h-52z"/>
-  <path fill="#17313e" d="M202 338h108v42H202z"/>
-  <path fill="#fff7df" d="M256 75c18 41 49 66 92 75-43 14-74 43-92 88-18-45-49-74-92-88 43-9 74-34 92-75z"/>
-  <circle cx="376" cy="132" r="20" fill="#fff7df"/>
+  <rect x="34" y="34" width="444" height="444" rx="94" fill="url(#bg)"/>
+  <circle cx="344" cy="164" r="74" fill="url(#sun)"/>
+  <path fill="#f7c45d" d="M98 358 174 252l44 70 34-44 76 80z"/>
+  <path fill="#102b44" d="M88 382c48-28 94-37 139-27 36 8 67 27 94 56 24 25 58 36 102 32v40H88z"/>
+  <path fill="#fffaf1" d="M86 410c44-25 87-35 128-31 38 4 73 20 105 49 26 24 62 32 106 24v30H86z"/>
+  <text x="240" y="330" text-anchor="middle" font-family="Noto Sans TC, Microsoft JhengHei, sans-serif" font-size="206" font-weight="900" fill="#fffaf1">九</text>
 </svg>

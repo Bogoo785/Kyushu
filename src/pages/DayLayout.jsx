@@ -23,6 +23,40 @@ function DayLayout({ day }) {
           <strong>{day.route}</strong>
         </div>
 
+        {day.flightDeal && (
+          <section className="flightDeal" aria-label={day.flightDeal.label}>
+            <div className="flightRows">
+              {day.flightDeal.flights.map((flight) => (
+                <div className="flightRow" key={`${flight.from}-${flight.to}-${flight.departure}`}>
+                  <div className="airlineMark">
+                    <span>{day.flightDeal.airline}</span>
+                  </div>
+                  <div className="flightTime">
+                    <strong>{flight.departure}</strong>
+                    <span>{flight.from}</span>
+                  </div>
+                  <div className="flightPath">
+                    <span>{flight.duration}</span>
+                    <div className="flightLine" aria-hidden="true">
+                      <i />
+                    </div>
+                    <span>{flight.type}</span>
+                  </div>
+                  <div className="flightTime">
+                    <strong>{flight.arrival}</strong>
+                    <span>{flight.to}</span>
+                  </div>
+                </div>
+              ))}
+            </div>
+            <div className="flightPrice">
+              <span>{day.flightDeal.resultText}</span>
+              <strong>{day.flightDeal.price}</strong>
+              <button type="button">{day.flightDeal.action}</button>
+            </div>
+          </section>
+        )}
+
         {hasSchedule ? (
           <div className="detailSchedule">
             {day.schedule.map((item) => (

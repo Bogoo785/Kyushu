@@ -349,6 +349,140 @@ main {
   line-height: 1.65;
 }
 
+.flightDeal {
+  width: min(900px, 100%);
+  display: grid;
+  grid-template-columns: minmax(0, 1fr) minmax(210px, 0.46fr);
+  overflow: hidden;
+  border: 1px solid #d7e1dd;
+  border-radius: 8px;
+  background: #fff;
+  box-shadow: 0 16px 40px rgba(19, 40, 55, 0.1);
+}
+
+.flightRows {
+  display: grid;
+  gap: 18px;
+  padding: 22px 24px;
+}
+
+.flightRow {
+  display: grid;
+  grid-template-columns: 106px 86px minmax(120px, 1fr) 86px;
+  gap: 14px;
+  align-items: center;
+}
+
+.airlineMark {
+  display: flex;
+  align-items: center;
+  gap: 8px;
+  color: #0a9a5b;
+  font-size: 0.78rem;
+  font-weight: 950;
+  letter-spacing: 0.03em;
+}
+
+.airlineMark::before {
+  content: "";
+  width: 10px;
+  height: 10px;
+  border-radius: 2px 8px 2px 8px;
+  background: linear-gradient(135deg, #29b765, #006f50);
+}
+
+.flightTime {
+  display: grid;
+  justify-items: center;
+  gap: 4px;
+  color: #0d1420;
+}
+
+.flightTime strong {
+  font-size: clamp(1.65rem, 3vw, 2.18rem);
+  font-weight: 500;
+  line-height: 1;
+}
+
+.flightTime span {
+  font-size: 1.05rem;
+  font-weight: 700;
+  letter-spacing: 0.03em;
+}
+
+.flightPath {
+  display: grid;
+  justify-items: center;
+  gap: 5px;
+  color: #49616a;
+  font-size: 0.95rem;
+  font-weight: 750;
+}
+
+.flightLine {
+  position: relative;
+  width: 100%;
+  height: 18px;
+}
+
+.flightLine::before {
+  content: "";
+  position: absolute;
+  top: 50%;
+  left: 0;
+  right: 0;
+  height: 2px;
+  background: #aab2c1;
+}
+
+.flightLine i {
+  position: absolute;
+  top: 50%;
+  right: 0;
+  width: 20px;
+  height: 20px;
+  transform: translateY(-50%);
+}
+
+.flightLine i::before {
+  content: "✈";
+  color: #746c83;
+  font-size: 1.1rem;
+  line-height: 20px;
+}
+
+.flightPrice {
+  display: grid;
+  align-content: center;
+  gap: 10px;
+  padding: 22px 24px;
+  border-left: 1px solid #e0e6e3;
+  background: #fbfcfd;
+}
+
+.flightPrice span {
+  color: #67737c;
+  font-size: 0.95rem;
+  font-weight: 750;
+}
+
+.flightPrice strong {
+  color: #101820;
+  font-size: clamp(1.9rem, 4vw, 2.35rem);
+  line-height: 1;
+}
+
+.flightPrice button {
+  min-height: 44px;
+  border: 0;
+  border-radius: 8px;
+  color: #fff;
+  background: #082744;
+  font: inherit;
+  font-size: 1.06rem;
+  font-weight: 900;
+}
+
 .infoGrid {
   display: grid;
   grid-template-columns: repeat(3, minmax(0, 1fr));
@@ -453,6 +587,15 @@ main {
   .infoGrid {
     grid-template-columns: 1fr;
   }
+
+  .flightDeal {
+    grid-template-columns: 1fr;
+  }
+
+  .flightPrice {
+    border-top: 1px solid #e0e6e3;
+    border-left: 0;
+  }
 }
 
 @media (max-width: 520px) {
@@ -473,6 +616,20 @@ main {
   .scheduleItem {
     grid-template-columns: 1fr;
     gap: 8px;
+  }
+
+  .flightRows {
+    padding: 18px;
+  }
+
+  .flightRow {
+    grid-template-columns: 1fr 1fr;
+    gap: 12px;
+  }
+
+  .airlineMark,
+  .flightPath {
+    grid-column: 1 / -1;
   }
 }
 
