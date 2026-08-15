@@ -1,59 +1,44 @@
 import { useEffect } from 'react'
 import heroImg from './assets/kyushu-hero.png'
-import Day105 from './pages/Day105'
-import Day106 from './pages/Day106'
-import Day107 from './pages/Day107'
-import Day108 from './pages/Day108'
-import Day109 from './pages/Day109'
-import Day1010 from './pages/Day1010'
-import Day1011 from './pages/Day1011'
-import Day1012 from './pages/Day1012'
-import Day1013 from './pages/Day1013'
+import DayLayout from './pages/DayLayout'
+import { itinerary } from './data/itinerary'
 import './App.css'
-
-const dayComponents = [Day105, Day106, Day107, Day108, Day109, Day1010, Day1011, Day1012, Day1013]
-const itineraryPages = dayComponents.map((Component) => ({ ...Component.day, Component }))
 
 function App() {
   const params = new URLSearchParams(window.location.search)
   const selectedDate = params.get('day')
-  const selectedPage = itineraryPages.find((item) => item.date === selectedDate)
+  const selectedDay = itinerary.find((item) => item.date === selectedDate)
 
   useEffect(() => {
-    document.title = selectedPage
-      ? `${selectedPage.date}｜${selectedPage.title}｜福岡行程`
-      : '福岡・鹿兒島・霧島行程手冊'
-  }, [selectedPage])
+    document.title = selectedDay
+      ? `${selectedDay.date}｜${selectedDay.title}｜九州旅行`
+      : '九州南北縱走｜鹿兒島・福岡 9 日旅行'
+  }, [selectedDay])
 
-  if (selectedPage) {
-    return <selectedPage.Component />
-  }
+  if (selectedDay) return <DayLayout day={selectedDay} />
 
   return (
     <main>
       <section className="frontPage" id="cover">
-        <img src={heroImg} alt="九州旅行風景封面" className="coverImage" />
+        <img src={heroImg} alt="九州山海旅行風景" className="coverImage" />
         <div className="coverOverlay" />
-
         <div className="frontContent">
           <div className="coverCopy">
             <p className="eyebrow">KYUSHU TRIP 2026</p>
-            <h1>福岡・鹿兒島・霧島行程手冊</h1>
-            <p className="subtitle">10/5 - 10/13｜高雄 ⇄ 福岡</p>
+            <h1>九州南北縱走</h1>
+            <p className="subtitle">10/5－10/13｜鹿兒島、指宿、櫻島、霧島、福岡</p>
           </div>
-
-          <nav className="tocPanel" aria-label="行程目錄">
+          <nav className="tocPanel" aria-label="每日行程目錄">
             <div className="tocHeader">
-              <p className="sectionKicker">CONTENTS</p>
-              <h2>目錄</h2>
+              <div>
+                <p className="sectionKicker">CONTENTS</p>
+                <h2>每日行程</h2>
+              </div>
+              <span className="tripLength">9 DAYS</span>
             </div>
             <div className="dayNav">
-              {itineraryPages.map((item) => (
-                <a
-                  href={`?day=${encodeURIComponent(item.date)}`}
-                  title={`${item.date}｜${item.title}`}
-                  key={item.date}
-                >
+              {itinerary.map((item) => (
+                <a href={`?day=${encodeURIComponent(item.date)}`} title={`${item.date}｜${item.title}`} key={item.date}>
                   <span>{item.date}</span>
                   {item.title}
                 </a>
