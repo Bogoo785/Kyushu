@@ -5,20 +5,31 @@ import { itinerary } from './data/itinerary'
 import './App.css'
 
 function App() {
-  const params = new URLSearchParams(window.location.search)
-  const selectedDate = params.get('day')
-  const selectedDay = itinerary.find((item) => item.date === selectedDate)
-
   useEffect(() => {
-    document.title = selectedDay
-      ? `${selectedDay.date}｜${selectedDay.title}｜九州旅行`
-      : '九州南北縱走｜鹿兒島・福岡 9 日旅行'
-  }, [selectedDay])
-
-  if (selectedDay) return <DayLayout day={selectedDay} />
+    document.title = '九州南北縱走｜鹿兒島・福岡 9 日旅行'
+    const url = new URL(window.location.href)
+    const linkedDay = itinerary.find((item) => item.date === url.searchParams.get('day'))
+    if (linkedDay && !url.hash) {
+      url.searchParams.delete('day')
+      url.hash = linkedDay.id
+      window.history.replaceState(null, '', url)
+    }
+    const target = document.getElementById(url.hash.slice(1))
+    if (target) target.scrollIntoView()
+  }, [])
 
   return (
     <main>
+      <nav className="dateNav" aria-label="日期快速導覽">
+        <a className="dateNavHome" href="#cover">行程總覽</a>
+        <div className="dateNavDates">
+          {itinerary.map((item) => (
+            <a href={`#${item.id}`} title={`${item.date}｜${item.title}`} key={item.id}>
+              {item.date}
+            </a>
+          ))}
+        </div>
+      </nav>
       <section className="frontPage" id="cover">
         <img src={heroImg} alt="九州山海旅行風景" className="coverImage" />
         <div className="coverOverlay" />
@@ -27,26 +38,22 @@ function App() {
             <p className="eyebrow">KYUSHU TRIP 2026</p>
             <h1>九州南北縱走</h1>
             <p className="subtitle">10/5－10/13｜鹿兒島、指宿、櫻島、霧島、福岡</p>
-          </div>
-          <nav className="tocPanel" aria-label="每日行程目錄">
-            <div className="tocHeader">
+            <div className="pdfResource">
               <div>
-                <p className="sectionKicker">CONTENTS</p>
-                <h2>每日行程</h2>
+                <strong>福岡細流</strong>
+                <p>行程文件 · PDF</p>
               </div>
-              <span className="tripLength">9 DAYS</span>
+              <div className="pdfActions">
+                <a href={`${import.meta.env.BASE_URL}documents/fukuoka-itinerary.pdf`} target="_blank" rel="noopener noreferrer">開啟 PDF ↗</a>
+                <a href={`${import.meta.env.BASE_URL}documents/fukuoka-itinerary.pdf`} download="福岡細流.pdf">下載</a>
+              </div>
             </div>
-            <div className="dayNav">
-              {itinerary.map((item) => (
-                <a href={`?day=${encodeURIComponent(item.date)}`} title={`${item.date}｜${item.title}`} key={item.date}>
-                  <span>{item.date}</span>
-                  {item.title}
-                </a>
-              ))}
-            </div>
-          </nav>
+          </div>
         </div>
       </section>
+      <div className="days">
+        {itinerary.map((day) => <DayLayout day={day} key={day.id} />)}
+      </div>
     </main>
   )
 }

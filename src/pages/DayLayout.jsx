@@ -1,12 +1,11 @@
 function DayLayout({ day }) {
   return (
-    <main>
-      <article className="dayPage singleDayPage" id={day.id}>
-        <a className="backLink" href="./">← 返回目錄</a>
+      <article className="dayPage" id={day.id} aria-labelledby={`${day.id}-title`}>
+        <a className="backLink" href="#cover">↑ 返回目錄</a>
         <div className="dayHeader">
           <div>
             <p className="dayNumber">{day.day}</p>
-            <h2>{day.date}｜{day.title}</h2>
+            <h2 id={`${day.id}-title`}>{day.date}｜{day.title}</h2>
           </div>
           <span className="mood">{day.mood}</span>
         </div>
@@ -47,7 +46,6 @@ function DayLayout({ day }) {
           </div>
         </div>
       </article>
-    </main>
   )
 }
 

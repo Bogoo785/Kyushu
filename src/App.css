@@ -15,6 +15,64 @@
 
 html {
   scroll-behavior: smooth;
+  scroll-padding-top: 84px;
+}
+
+.dateNav {
+  position: sticky;
+  top: 0;
+  z-index: 10;
+  display: flex;
+  align-items: center;
+  gap: 16px;
+  padding: 10px clamp(12px, 3vw, 46px);
+  background: #17313e;
+  color: #fffaf1;
+  box-shadow: 0 3px 14px rgba(6, 18, 25, 0.18);
+}
+
+.dateNavHome {
+  flex-shrink: 0;
+  font-weight: 900;
+}
+
+.dateNavDates {
+  display: flex;
+  gap: 8px;
+  min-width: 0;
+  overflow-x: auto;
+}
+
+.dateNav a {
+  display: inline-flex;
+  align-items: center;
+  justify-content: center;
+  min-height: 44px;
+  padding: 8px 12px;
+  border-radius: 8px;
+  text-decoration: none;
+  white-space: nowrap;
+}
+
+.dateNavDates a {
+  flex-shrink: 0;
+  border: 1px solid rgba(255, 250, 241, 0.3);
+  font-weight: 750;
+}
+
+.dateNav a:hover {
+  background: #2b6f77;
+}
+
+.dateNav a:focus-visible {
+  outline: 2px solid #f6c35d;
+  outline-offset: -2px;
+}
+
+@media (prefers-reduced-motion: reduce) {
+  html {
+    scroll-behavior: auto;
+  }
 }
 
 body {
@@ -68,7 +126,7 @@ main {
 
 .frontContent {
   display: grid;
-  grid-template-columns: minmax(260px, 0.85fr) minmax(360px, 0.72fr);
+  grid-template-columns: minmax(0, 1fr);
   gap: clamp(24px, 5vw, 64px);
   align-items: end;
   width: min(1220px, 100%);
@@ -197,6 +255,64 @@ main {
   display: grid;
   gap: 1px;
   background: #cfd8d5;
+}
+
+.pdfResource {
+  display: flex;
+  flex-wrap: wrap;
+  align-items: center;
+  justify-content: space-between;
+  gap: 12px;
+  width: fit-content;
+  max-width: 100%;
+  margin-top: 24px;
+  padding: 16px 20px;
+  border-radius: 8px;
+  background: rgba(255, 250, 241, 0.94);
+}
+
+.pdfResource strong {
+  color: #132837;
+}
+
+.pdfResource p {
+  margin: 5px 0 0;
+  color: #536067;
+  font-size: 0.84rem;
+}
+
+.pdfActions {
+  display: flex;
+  flex-wrap: wrap;
+  gap: 8px;
+}
+
+.pdfActions a {
+  display: inline-flex;
+  align-items: center;
+  min-height: 44px;
+  padding: 10px 14px;
+  border: 1px solid #2b6f77;
+  border-radius: 8px;
+  color: #235a62;
+  text-decoration: none;
+  font-size: 0.9rem;
+  font-weight: 800;
+}
+
+.pdfActions a:first-child {
+  color: #fffaf1;
+  background: #2b6f77;
+}
+
+.pdfActions a:hover {
+  border-color: #17313e;
+  box-shadow: 0 2px 8px rgba(19, 40, 55, 0.16);
+}
+
+.pdfActions a:focus-visible {
+  outline: 3px solid #b76646;
+  outline-offset: 3px;
 }
 
 .dayPage {
@@ -653,6 +769,11 @@ main {
 }
 
 @media print {
+  .dateNav,
+  .backLink {
+    display: none;
+  }
+
   body {
     background: #fff;
   }
